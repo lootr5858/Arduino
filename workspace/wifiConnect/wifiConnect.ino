@@ -1,4 +1,4 @@
-/*  !!! --- wifi & mqtt --- !!!
+/*  !!! --- wifi --- !!!
  *   
  *  phase:
  *    1. connect to wifi
@@ -10,6 +10,7 @@
  *    
  *  guide:
  *    - https://www.hackster.io/uncle-yong/wemos-r32-with-arduino-startup-guide-7bc841
+ *    - https://techtutorialsx.com/2019/10/05/esp32-arduino-pinging-a-remote-host/
  */
 
 
@@ -20,18 +21,10 @@
 #include "WiFi.h"
 #include "ESP32Ping.h"
 
-//     !!! end of DEPENCIES !!!
-// -------------------------------- //
-
 
 
 // -------------------------------- //
 //    !!! PINS here !!!
-
-
-
-//     !!! end of PINS !!!
-// -------------------------------- //
 
 
 
@@ -40,41 +33,6 @@
 
 const char* ssid = "SINGTEL-2A1A";
 const char* password =  "ikeequaiph";
-
-//     !!! end of CONSTANTS !!!
-// -------------------------------- //
-
-
-
-// -------------------------------- //
-//    !!! FUNCTIONS here !!!
-
-void connectWifi()
-{
-  // We start by connecting to a WiFi network
-
-  Serial.println();
-  Serial.println();
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
-
-  WiFi.begin(ssid, password);
-
-  while (WiFi.status() != WL_CONNECTED)
-  {
-      delay(500);
-      Serial.print(".");
-  }
-
-  Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
-  Serial.println("");
-}
-
-//     !!! end of FUNCTIONS !!!
-// -------------------------------- //
 
 
 
@@ -105,5 +63,31 @@ void loop()
   delay(1000);
 }
 
-//     !!! end of EXECUTION !!!
+
+
 // -------------------------------- //
+//    !!! FUNCTIONS here !!!
+
+void connectWifi()
+{
+  // We start by connecting to a WiFi network
+
+  Serial.println();
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED)
+  {
+      delay(500);
+      Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+  Serial.println("");
+}
